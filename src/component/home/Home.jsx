@@ -48,7 +48,6 @@ const Home = ()=>{
                 <li>{filt.title}</li>
             </Link>)}
 
-            
         </>
     )}
 
