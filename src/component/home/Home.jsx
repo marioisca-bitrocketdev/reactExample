@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import apiPost from '../../api/apiPost';
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Home = ()=>{
     const [err, setErr] = useState('')
@@ -11,9 +11,6 @@ const Home = ()=>{
     // const postList = posts.map(post=>(<p key={post.id}><a href="http://">{post.title}</a></p>))
 
     const isListEmpty = filtered.length === 0 
-    let { id } = useParams();
-
-
 
     useEffect(()=> {
         const fetchPost = async ()=>{
@@ -47,8 +44,8 @@ const Home = ()=>{
             <input value={input} onChange={(e)=> setInput(e.target.value)} type="text"/>
             {isListEmpty && <p>Nessun risultato disponibile</p>}
            
-            {filtered.map((filt)=> <Link to={`/detail/${filt.id}`}>
-                <p>{filt.title}</p>
+            {filtered.map((filt)=> <Link key={filt.id} to={`detail/${filt.id}`}>
+                <li>{filt.title}</li>
             </Link>)}
 
             
